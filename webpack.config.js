@@ -9,6 +9,7 @@ export const output = {
 };
 
 module.exports = {
+  devtool: 'eval-source-map',
   mode: "development",
   entry: "./source/index.js",
   output: {
