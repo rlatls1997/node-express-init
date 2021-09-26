@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    exam: "./source/script/exam.js",
-    //another: "./source/script/another.js",
+    index: "./source/script/exam.js",
+    //about: "./source//javascript/about.js",
   },
   output: {
     path: path.resolve("./public"),
@@ -14,7 +14,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg|webp)$/i,
+        test: /\.svg/,
+        type: "asset/inline",
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/i,
         use: {
           loader: "file-loader",
           options: {
@@ -35,7 +39,6 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
-          options: { presets: ["@babel/preset-env"] },
         },
       },
     ],
@@ -44,12 +47,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./source/index.html",
       filename: "./index.html",
-      chunks: ["exam"],
+      chunks: ["index"],
     }),
     // new HtmlWebpackPlugin({
-    //   template: "./source/another.html",
-    //   filename: "./another.html",
-    //   chunks: ["another"],
+    //   template: "./source/about.html",
+    //   filename: "./about.html",
+    //   chunks: ["about"],
     // }),
   ],
 };
